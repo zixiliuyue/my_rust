@@ -1,0 +1,8 @@
+/target
+
+# 本地直接用 rustc 或编辑器产生的临时编译产物。
+src/main
+src/**/*.o
+
+# Day 7 命令行实战运行时生成的数据文件。
+examples/data/todos.txt
