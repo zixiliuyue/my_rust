@@ -6,3 +6,10 @@ src/**/*.o
 
 # Day 7 命令行实战运行时生成的数据文件。
 examples/data/todos.txt
+
+# 本地敏感配置。教程不需要这些文件，避免误提交真实 token、密码或私钥路径。
+.env
+.env.*
+*.pem
+*.key
+secrets/

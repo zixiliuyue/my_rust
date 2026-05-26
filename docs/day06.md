@@ -12,12 +12,16 @@ cargo test
 重点阅读：
 
 - `src/lib.rs`：库 crate 入口。
+- `src/course/mod.rs`：课程模块树，统一导出 Day 1-14。
+- `src/course/day06_traits_tests.rs`：Day 6 的核心逻辑和测试。
 - `src/course_utils.rs`：共享模块。
-- `src/bin/day06_traits_tests.rs`：trait、泛型和测试示例。
+- `src/bin/day06_traits_tests.rs`：薄 binary 入口，只调用课程模块。
 
 ## 底层原理
 
 Rust 项目可以同时有库 crate 和多个 binary crate。`src/lib.rs` 暴露库代码，`src/bin/*.rs` 是多个独立可执行入口。binary 可以通过包名转换后的 crate 名访问库代码，本项目包名 `hello-rust` 在代码里写作 `hello_rust`。
+
+本仓库已经把 Day 1-14 的核心逻辑放进 `src/course/`，`src/bin/` 只保留入口。这样测试可以直接覆盖库模块，后续如果要接 Web、HTTP API 或更复杂 CLI，不需要复制业务代码。
 
 泛型函数 `fn bigger<T: Ord + Copy>(...)` 在编译期根据实际类型生成代码，这通常叫静态分发。好处是运行时开销低，坏处是编译产物可能变大。
 
